@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+        <record id="sequence_ma_service" model="ir.sequence">
+            <field name="name">Sequence Numbers</field>
+            <field name="code">sale.ma_service</field>
+            <field name="prefix">Contract-</field>
+            <field name="padding">4</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+        <record id="sequence_ma" model="ir.sequence">
+            <field name="name">Sequence Numbers</field>
+            <field name="code">ma.service</field>
+            <field name="prefix">MA--</field>
+            <field name="padding">4</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

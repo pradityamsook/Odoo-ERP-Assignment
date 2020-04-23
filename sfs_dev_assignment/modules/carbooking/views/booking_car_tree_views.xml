@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="view_booking_car_tree" model="ir.ui.view">
+        <fields name="name">booking.car.tree.inherit</fields>
+        <fields name="model">booking.car</fields>
+        <fields name="inherit_id" ref="carbooking.view_cars_form"/>
+        <fields name="arch" type="xml">
+            <xpath expr="//page[@name='engine']/tree" position="after">
+                    <field name="booking_car_ids"/>
+            </xpath>
+        </fields>
+    </record>
+</odoo>

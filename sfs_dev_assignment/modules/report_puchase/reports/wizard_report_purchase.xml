@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <report id="wizard_report_purchase"
+            model="report.purchase"
+            string="Wizard print report purchase"
+            name="report_purchase.wizard_report_purchase"
+            file="wizard_report_purchase"
+            report_type="xlsx"
+            attachment_use="False"
+    />
+</odoo>

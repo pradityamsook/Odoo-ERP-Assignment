@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ma_service_ma_service1,ma_service.sale_ma_service,model_sale_ma_service,,1,1,1,1
+access_ma_service_ma_service2,ma_service.ma_service,model_ma_service,,1,1,1,1
+access_ma_service_ma_service4,ma_service.ma_project_source,model_ma_project_source,,1,1,1,1
+access_ma_service_ma_service6,ma_service.ma_vendor_type,model_ma_vendor_type,,1,1,1,1
+access_ma_service_ma_service7,ma_service.ma_site,model_ma_site,,1,1,1,1
+access_ma_service_ma_service8,ma_service.ma_status,model_ma_status,,1,1,1,1
+access_ma_service_ma_service9,ma_service.wizard_ma_report,model_wizard_ma_report,,1,1,1,1

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+<!--Form car-->
+    <record id="view_cars_form" model="ir.ui.view">
+        <field name="name">cars.form</field>
+        <field name="model">car.car</field>
+        <field name="arch" type="xml">
+            <form string="Cars">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="register_no"/>
+                            <field name="vehicle_type_id"/>
+                            <field name="car_brand"/>
+                            <field name="color"/>
+                            <field name="model_year"/>
+                        </group>
+                        <group>
+                            <field name="car_code"/>
+                            <field name="model"/>
+                            <field name="body_no"/>
+                            <field name="date_of_register"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="engine" string="เครื่องยนตร์">
+                            <group>
+                                <field name="engine_brands"/>
+                                <field name="engine_no"/>
+                                <field name="gas_no"/>
+                                <field name="fuel"/>
+                            </group>
+                        </page>
+                        <page string="Booking car" name="booking_car">
+                            <form>
+                                <group>
+                                    <field name="booking_car_ids"> <!--ตัวบ่งบอกการเรียกฟิลด์มาใช้-->
+                                        <tree create="false" edit="false" delete="false">
+                                            <field name="user_id"/>
+                                            <field name="phone"/>
+                                            <field name="car_id"/>
+                                            <field name="start_date"/>
+                                            <field name="end_date"/>
+                                            <field name="state"/>
+                                        </tree>
+                                    </field>
+                                    <!--<field name="booking_car_user_id"/>-->
+                                </group>
+                            </form>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--View tree class car-->
+    <record id="view_cars_tree" model="ir.ui.view">
+        <field name="name">cars.tree</field>
+        <field name="model">car.car</field>
+        <field name="arch" type="xml">
+            <tree string="Cars">
+                <field name="name"/>
+                <field name="register_no"/>
+                <field name="car_brand"/>
+                <field name="model"/>
+                <field name="body_no"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--Main form promotions -->
+    <record id="main_cars_form" model="ir.actions.act_window">
+        <field name="name">Cars</field>
+        <field name="res_model">car.car</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_cars_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new Car.
+            </p>
+        </field>
+    </record>
+
+    <menuitem action="main_cars_form"
+              id="menu_action_cars_form"
+              name="Cars"
+              parent="carbooking.menu_car_subconfig"
+              sequence="3"/>
+</odoo>

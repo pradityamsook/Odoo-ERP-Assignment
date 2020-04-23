@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Top menu item -->
+        <menuitem id="menu_promotions"
+                  name="Promotions"
+                  parent="sale.sale_menu_root"
+                  sequence="3"
+        />
+
+        <record id="view_promotions_form" model="ir.ui.view">
+            <field name="name">promotions.promotions.form</field>
+            <field name="model">promotions.promotions.type</field>
+            <field name="arch" type="xml">
+                <form string="promotions">
+                    <header>
+                        <button class="btn-success" name="active_promotion_status_bar" type="object" states="draft" string="เปิดโปรโมชั่น"/>
+                        <button class="btn-warning" name="close_promotion_status_bar" type="object" states="active" string="ปิดโปรโมชั่น"/>
+                        <button class="btn-danger" name="close_promotion_status_bar" type="object" states="draft,active" string="ยกเลิก"/>
+                        <field name = "state" widget="statusbar" statusbar_visible="draft,active,close"/>
+                    </header>
+                   <sheet>
+                       <div class="oe_title">
+                            <h1>
+                                <field name="name" string="โปรโมชั่น"/>
+                            </h1>
+                        </div>
+                       <group>
+                           <group>
+                               <field name="datetime_promotions_start"/>
+                               <field name="datetime_promotions_end"/>
+                           </group>
+                           <group>
+                               <!--<field name="employee_id"></field>-->
+                               <field name="user_id"/>
+                           </group>
+
+                       </group>
+                       <notebook string = 'รายละเอียด'>
+                           <page string = 'สินค้าที่ร่วมรายการ' name = 'promotions_type_line'>
+                                   <field name = 'promotions_type_line'>
+                                       <tree editable="bottom">
+                                           <field name = "product_id"></field>
+                                           <field name = "note"></field>
+                                       </tree>
+                                   </field>
+                           </page>
+                           <page string = 'ของแถม' name="promotions_giveaway_lines">
+                               <field name = "promotions_giveaway_lines">
+                                   <tree editable="bottom">
+                                       <!--<field name="giveaway_lines"></field>-->
+                                       <field name="name"/>
+                                       <field name = "product_id"></field>
+                                       <field name = "product_uom_id"></field>
+                                       <field name = "product_uom_qty"></field>
+                                       <field name = "notes"></field>
+                                   </tree>
+                               </field>
+                           </page>
+                       </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+<!--        <record id="promotions_action_tree_id" model="ir.ui.view">-->
+<!--            <field name="name">promotions.action.tree</field>-->
+<!--            <field name="model">give.away.line</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <tree string="Promotions">-->
+<!--                    <field name="name"/>-->
+<!--                    <field name="giveaway_lines"></field>-->
+<!--                    <field name = "product_id"></field>-->
+<!--                    <field name = "product_uom_id"></field>-->
+<!--                    <field name = "product_uom_qty"></field>-->
+<!--                    <field name = "notes"></field>-->
+<!--                </tree>-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <record id="view_promotions_tree" model="ir.ui.view">
+            <field name="name">promotions.promotions.tree</field>
+            <field name="model">promotions.promotions.type</field>
+            <field name="arch" type="xml">
+                <tree string="Promotions">
+                    <field name="name"/>
+                    <field name="state"/>
+                    <field name="datetime_promotions_start"/>
+                    <field name="datetime_promotions_end"/>
+                    <field name="user_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--Main form promotions -->
+        <record id="action_promotions_form" model="ir.actions.act_window">
+            <field name="name"/>
+            <field name="res_model">promotions.promotions.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_promotions_tree"/>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Add a new Promotions
+              </p>
+            </field>
+        </record>
+
+        <menuitem action="action_promotions_form"
+                  id="menu_action_promotions_form"
+                  name="Promotions"
+                  parent="menu_promotions"
+                  sequence="3"
+        />
+
+    </data>
+</odoo>

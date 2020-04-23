@@ -1,0 +1,61 @@
+<odoo>
+    <data>
+        <record id="agreement_form" model="ir.ui.view">
+            <field name="name">agreement.form</field>
+            <field name="model">ma.service</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_done" states="handover" type="object" class="oe_highlight" string="Done"/>-->
+                        <button name="action_cancel" states="handover,installation,done" type="object" class="oe_highlight" string="Cancel"/>
+                        <button name="action_installation" states="draft" type="object" class="oe_highlight" string="Installation"/>-->
+                        <button name="action_hand_over" states="installation" type="object" class="oe_highlight" string="Hand Over"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,installation,handover,done,cancel"/>
+                    </header>
+                    <sheet>
+                        <div>
+                            <field name="name"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="ma_service" attrs="{'readonly': [('state', 'in', ('done', 'cancel'))]}" >
+                                <tree editable="bottom">
+                                    <field name="contract_no"/>
+                                    <field name="partner"/>
+                                    <field name="ma_source"/>
+                                    <field name="sale_ref" options="{'no_quick_create': True, 'no_create_edit' : True, 'no_create' : True}"/>
+                                    <field name="product"/>
+                                    <field name="sn"/>
+                                    <field name="vendor_type"/>
+                                    <field name="site"/>
+                                    <field name="vendor_start_date"/>
+                                    <field name="vendor_end_date"/>
+                                    <field name="customer_start_date"/>
+                                    <field name="customer_end_date"/>
+                                    <field name="ma_end"/>
+                                    <field name="status"/>
+                                    <field name="company_id" invisible="1"/>
+                                </tree>
+                            </field>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="agreement_tree" model="ir.ui.view">
+            <field name="name">agreement.tree</field>
+            <field name="model">ma.service</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+
+                </tree>
+            </field>
+        </record>
+        <record id="agreement_action" model="ir.actions.act_window">
+            <field name="name">MA</field>
+            <field name="res_model">ma.service</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_ma_process" name="MA"/>
+        <menuitem id="menu_ma_process_form" name="MA" action="agreement_action" parent="menu_ma_process"/>
+    </data>
+</odoo>

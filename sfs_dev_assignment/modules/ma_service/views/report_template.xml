@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report id = "action_ma_report_pdf"
+                model = "sale.ma_service"
+                string = "MA Report"
+                report_type = "qweb-html"
+                name = "ma_service.report_ma"
+                file = "ma_service.report_ma"
+                />
+    </data>
+ </odoo>

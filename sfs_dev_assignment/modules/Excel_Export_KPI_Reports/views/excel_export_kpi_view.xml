@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--    <record id="view_order_report_id" model="ir.ui.view">-->
+<!--         <field name="name">kpi.report</field>-->
+<!--         <field name="model">sale.order</field>-->
+<!--         <field name="arch" type="xml">-->
+<!--         </field>-->
+<!--    </record>-->
+
+    <record id="action_kpi_report" model="ir.actions.act_window">
+        <field name="name">KPI Report</field>
+        <field name="model">sale.order</field>
+        <fieldg name="view_type">form</fieldg>
+        <field name="view_mode">tree,form</field>
+<!--        <field name="view_id" ref="view_order_report_id"/>-->
+<!--        <field name="search_view_id" string="Done"/>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new product
+            </p><p>
+                You must define a product for everything you purchase,
+                whether it's a physical product, a consumable or services.
+            </p>
+        </field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem id="menu_kpi_report"
+              name="KPI Report"
+              action="action_kpi_report"
+              parent="sale.menu_sale_report"
+              sequence="2"
+    />
+
+</odoo>

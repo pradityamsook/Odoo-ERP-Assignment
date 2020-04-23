@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <report id="wizard_sale_report_total"
+            model="sale.report.total"
+            string="wizard print sale report total"
+            name="sale_report.wizard_sale_report_total"
+            file="wizard_sale_report_total"
+            report_type="xlsx"
+            attachment_use="False"
+    />
+</odoo>

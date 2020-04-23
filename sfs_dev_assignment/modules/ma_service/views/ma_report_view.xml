@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_ma">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+
+                        <h2>
+                        <span style="padding-left: 485px;">MA Report</span>
+                        </h2>
+                        <table class="table table-sm o_main_table" name="ma_line_table">
+                            <thead>
+                                <tr>
+                                    <t t-set="colspan" t-value="6"/>
+                                    <th class="text-center"><span>Sl.no</span></th>
+                                    <th class="text-center"><span>Partner</span></th>
+                                    <th class="text-center"><span>Contract No</span></th>
+                                    <th class="text-center"><span>Project Name</span></th>
+                                    <th class="text-center"><span>MA Source</span></th>
+                                    <th class="text-center"><span>Product List</span></th>
+                                    <th class="text-center"><span>S/N</span></th>
+                                    <th class="text-center"><span>Vendor Type</span></th>
+                                    <th class="text-center"><span>Site</span></th>
+                                    <th class="text-center"><span>Vendor Period</span></th>
+                                    <th class="text-center"><span>Customer Period </span></th>
+                                    <th class="text-center"><span>MA Before End</span></th>
+                                    <th class="text-center"><span>Status</span></th>
+                                </tr>
+                            </thead>
+                            <t t-set="count" t-value="1"/>
+                            <tbody>
+                                <t t-foreach="docs" t-as="line">
+                                    <tr>
+                                        <td class="text-center"><span t-esc="count"/></td>
+                                        <td class="text-center"><span t-esc="line.partner.name"/></td>
+                                        <td class="text-center"><span t-esc="line.contract_no"/></td>
+                                        <td class="text-center"><span t-esc="line.sale_ref.name"/></td>
+                                        <td class="text-center"><span t-esc="line.ma_source.name"/></td>
+                                        <td class="text-center"><span t-esc="line.product"/></td>
+                                        <td class="text-center"><span t-esc="line.sn"/></td>
+                                        <td class="text-center"><span t-esc="line.vendor_type.name"/></td>
+                                        <td class="text-center"><span t-esc="line.site.name"/></td>
+                                        <span><td class="text-center"><span t-esc="line.vendor_start_date"/>- <span t-esc="line.vendor_end_date"/></td></span>
+                                        <span><td class="text-center"><span t-esc="line.customer_start_date"/>- <span t-esc="line.customer_end_date"/></td></span>
+                                        <td class="text-center"><span t-esc="line.ma_end"/></td>
+                                        <td class="text-center"><span t-esc="line.status.name"/></td>
+
+                                        <t t-set="count" t-value="count+1"/>
+
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+     </data>
+</odoo>

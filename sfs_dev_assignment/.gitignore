@@ -1,0 +1,11 @@
+# Created by .ignore support plugin (hsz.mobi)
+modules/Excel_Export_KPI_Reports/data/
+modules/Excel_Export_KPI_Reports/report/
+modules/Excel_Export_KPI_Reports/static/
+modules/carbooking/data/
+modules/carbooking/report/
+modules/carbooking/static/
+modules/module_template/data/
+modules/module_template/report/
+modules/promotions/data/
+modules/promotions/report/

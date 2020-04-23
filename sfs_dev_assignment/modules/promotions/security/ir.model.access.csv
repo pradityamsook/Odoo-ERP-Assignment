@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_promotions_promotions_type,promotions_promotions_type,model_promotions_promotions_type,base.group_user,1,1,1,1
+access_promotions_type_line,promotions_type_line,model_promotions_type_line,base.group_user,1,1,1,1
+access_give_away_line,give_away_line,model_give_away_line,base.group_user,1,1,1,1

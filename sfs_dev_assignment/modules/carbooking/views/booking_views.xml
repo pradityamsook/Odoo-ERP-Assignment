@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!--Form view booking-->
+    <record id="view_booking_form" model="ir.ui.view">
+        <field name="name">booking.form</field>
+        <field name="model">booking.car</field>
+        <field name="arch" type="xml">
+            <form string="Booking car">
+                <header>
+                    <button class="btn-success" name="to_approve_state" type="object" states="draft"
+                                string="To Approve" attrs="{'invisible':[('state','not in',['to_approve, approve, finish, cancel'])]}"/>
+                    <button class="btn-warning" name="approve_state" type="object" states="to_approve" string="Approve"/>
+                    <button class="btn-warning" name="draft_state" type="object" states="to_approve" string="Rewrite"/>
+                    <button class="btn-success" name="finish_state" type="object" states="approve" string="Finish"/>
+
+                    <!--Cancel state-->
+                    <button class="btn-danger" name="cancel_state" type="object" states="draft,to_approve,approve,finish" string="Cancel"/>
+                    <field name = "state" widget="statusbar" statusbar_visible="draft,to_approve,approve,finish"/>
+                </header>
+                <sheet>
+                    <group attrs="{'readonly':[('state','=','to_approve'),('state','=','approve'),('state','=','finish'),]}">
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                    </group>
+                    <group>
+                        <group attrs="{'readonly':[('state','=','to_approve'),('state','=','approve'),('state','=','finish'),]}">
+                            <field name="user_id" />
+                            <field name="phone"/>
+                            <field name="car_id"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="total_days" on_change="_calculate_days()"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--View tree class booking-->
+    <record id="view_booking_tree" model="ir.ui.view">
+        <field name="name">booking.tree</field>
+        <field name="model">booking.car</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="user_id"/>
+                <field name="car_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--Main form booking -->
+    <record id="main_booking_form" model="ir.actions.act_window">
+        <field name="name">Booking</field>
+        <field name="res_model">booking.car</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_booking_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new Booking.
+            </p>
+        </field>
+    </record>
+
+    <menuitem   action="main_booking_form"
+              id="menu_booking_form"
+              name="Booking"
+              parent="carbooking.menu_booking"
+              sequence="1"/>
+</odoo>
